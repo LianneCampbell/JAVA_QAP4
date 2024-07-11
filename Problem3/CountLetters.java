@@ -1,17 +1,16 @@
 package Problem3;
 
+import java.util.Scanner;
+
 // CountLetters.java
 //
 // Reads a word from the standard input and prints the number of
 // occurrences of each letter in that word.
 //
-
-import java.util.Scanner;
-
 public class CountLetters {
     public static void main(String[] args) {
-        int[] counts = new int[26];
-        Scanner scan = new Scanner(System.in);
+        int[] counts = new int[26]; // Array to count occurrences of each letter ('A' to 'Z')
+        Scanner scan = new Scanner(System.in); // Scanner for standard input
 
         try {
             // Get word from user
@@ -24,13 +23,14 @@ public class CountLetters {
             // Count frequency of each letter in string
             for (int i = 0; i < word.length(); i++) {
                 try {
-                    counts[word.charAt(i) - 'A']++;
+                    counts[word.charAt(i) - 'A']++; // Increment count for the corresponding letter
                 } catch (ArrayIndexOutOfBoundsException e) {
+                    // Catch exception if character is not a letter (not in 'A' to 'Z')
                     System.out.println("Not a letter: " + word.charAt(i));
                 }
             }
 
-            // Print frequencies
+            // Print frequencies of letters found
             System.out.println();
             for (int i = 0; i < counts.length; i++) {
                 if (counts[i] != 0) {
@@ -38,7 +38,7 @@ public class CountLetters {
                 }
             }
         } finally {
-            // Close the scanner
+            // Close the scanner to release resources
             scan.close();
         }
     }
